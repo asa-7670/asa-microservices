@@ -69,4 +69,15 @@ public class Product {
     public void setPrix(Double prix) {
         this.prix = prix;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", prix=" + prix +
+                '}';
+    }
 }

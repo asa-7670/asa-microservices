@@ -18,16 +18,20 @@ public class ProductController {
     private ProductDao productDao;
 
     @GetMapping(value = "/Produits")
-    public List<Product> listDesProduits(){
+    public List<Product> getProducts(){
         List<Product> result= productDao.findAll();
         if(Objects.isNull(result) || result.isEmpty()) throw new ProductNotFoundException("Aucun produit n'est disponible à la vente");
         return result;
     }
 
     @GetMapping(value = "/Produits/{id}")
-    public Optional<Product> recupererUnProduit(@PathVariable Integer id){
-        Optional<Product> result= productDao.findById(id);
-        if(!result.isPresent()) throw new ProductNotFoundException("Le produit correspondant à l'id " + id + " n'existe pas");
-        return result;
+    public Optional<Product> getProduct(@PathVariable Integer id){
+        return Optional.ofNullable(id)
+                .map(i->{
+                    Optional<Product> result=  productDao.findById(i);
+                    if(!result.isPresent()) throw new ProductNotFoundException("Le produit correspondant à l'id " + id + " n'existe pas");
+                    return result;
+                })
+                .orElseThrow(()-> new IllegalArgumentException("L'identifiant du produit est requis"));
     }
 }
