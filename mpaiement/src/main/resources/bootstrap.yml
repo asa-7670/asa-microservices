@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: asa-microservice-paiements
+  profiles:
+    active: native
+  cloud:
+    config:
+      uri:  http://localhost:9999/asaConfigServer
+      fail-fast : true

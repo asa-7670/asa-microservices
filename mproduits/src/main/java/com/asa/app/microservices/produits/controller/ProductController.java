@@ -1,5 +1,6 @@
 package com.asa.app.microservices.produits.controller;
 
+import com.asa.app.microservices.produits.configurations.ApplicationPropertiesConfiguration;
 import com.asa.app.microservices.produits.dao.ProductDao;
 import com.asa.app.microservices.produits.exceptions.ProductNotFoundException;
 import com.asa.app.microservices.produits.model.Product;
@@ -16,12 +17,16 @@ import java.util.Optional;
 public class ProductController {
     @Autowired
     private ProductDao productDao;
+    @Autowired
+    ApplicationPropertiesConfiguration appProperties;
 
     @GetMapping(value = "/Produits")
     public List<Product> getProducts(){
         List<Product> result= productDao.findAll();
         if(Objects.isNull(result) || result.isEmpty()) throw new ProductNotFoundException("Aucun produit n'est disponible à la vente");
-        return result;
+        //limite le resultat
+        List<Product> listelimitee = result.subList(0,appProperties.getPrduitSize());
+        return listelimitee;
     }
 
     @GetMapping(value = "/Produits/{id}")

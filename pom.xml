@@ -11,26 +11,32 @@
 	<name>${project.name}</name>
 	<description>Microservices application</description>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.RELEASE</version>
-	</parent>
-
 	<properties>
-		<project.name>asa-microservices-app</project.name>
-		<project.version>1.0.0-SNAPSHOT</project.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<project.name>asa-microservices-app</project.name>
+		<project.version>1.0.0-SNAPSHOT</project.version>
+
 		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<spring.version>5.0.6.RELEASE</spring.version>
+		<spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+
 		<bootstrap.version>4.0.0-2</bootstrap.version>
+		<spring-cloud.version>Greenwich.RC2</spring-cloud.version>
+
+		<h2databases.version>1.4.197</h2databases.version>
 	</properties>
-	
+
 	<modules>
 		<module>mcommandes</module>
 		<module>mproduits</module>
 		<module>mpaiement</module>
 		<module>client-ui</module>
+		<module>config-server</module>
 	</modules>
 
 	<dependencyManagement>
@@ -50,7 +56,48 @@
 				<artifactId>mproduits</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<!-- spring-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-thymeleaf</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${spring.boot.version}</version>
+				<scope>test</scope>
+			</dependency>
 
+			<!-- data bases -->
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>${h2databases.version}</version>
+				<scope>runtime</scope>
+			</dependency>
 			<!-- others -->
 			<dependency>
 				<groupId>org.webjars</groupId>
@@ -62,14 +109,25 @@
 
 	</dependencyManagement>
 
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring.boot.version}</version>
 			</plugin>
 		</plugins>
 	</build>
+
+
 
 
 </project>
