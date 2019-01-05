@@ -8,7 +8,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>config-server</artifactId>
-	<name>config-server</name>
+	<name>${project.name} - config-server</name>
 	<description>External config properties</description>
 
 	<dependencies>

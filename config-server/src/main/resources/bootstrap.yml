@@ -1,6 +1,6 @@
 spring:
   application:
-    name: asa-microservice-configServer
+    name: asa-microservice-config-server
   profiles:
     active: native
   cloud:
