@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="fr">
+<head>
+    <title>asa-microservices-app</title>
+
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1  class="text-center">Commerce Application</h1>
+
+    <div class="row">
+        <div class="col-md-4 mx-auto mt-5 text-center">
+
+            <img th:src="${product.image}" class="card-img-top"/>
+
+            <p th:text="${product.title}" class="font-weight-bold"></p>
+
+            <p th:text="${product.description}"></p>
+
+            <p>
+                <a th:href="@{|/details-produit/commander-produit/${product.uuid}|}" class="font-weight-bold">COMMANDER</a>
+            </p>
+
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

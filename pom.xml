@@ -33,6 +33,7 @@
 	</properties>
 
 	<modules>
+		<module>asa-core</module>
 		<module>mcommandes</module>
 		<module>mproduits</module>
 		<module>mpaiement</module>
@@ -43,6 +44,11 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>asa-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>mcommandes</artifactId>
