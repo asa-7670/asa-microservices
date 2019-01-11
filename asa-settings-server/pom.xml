@@ -7,8 +7,16 @@
 		<artifactId>asa-microservices</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>asa-core</artifactId>
-	<name>${project.name} - asa-core</name>
-	<description>Bibliothéque Core</description>
+	<artifactId>asa-settings-server</artifactId>
+	<name>${project.name} - settings-server</name>
+	<description>External config properties</description>
 
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-server</artifactId>
+		</dependency>
+
+	</dependencies>
 </project>

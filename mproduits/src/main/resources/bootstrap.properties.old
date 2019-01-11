@@ -1,6 +1,0 @@
-spring.application.name=asa-microservice-produits
-server.servlet.context-path=/asaProduits
-server.port=9010
-
-spring.cloud.config.uri: http://localhost:9999/asaConfigServer
-fspring.cloud.config.uri.ail-fast: true

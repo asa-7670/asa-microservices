@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: asa-setting-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:  classpath:/config/,
+            classpath:/config/asa-api-commandes.properties,
+            classpath:/config/asa-api-paiements.properties,
+            classpath:/config/asa-api-produits.properties,
+            classpath:/config/asa-api-client-ui.properties,
+            classpath:/config/asa-zuul-server.properties
+server:
+  port: 9999
+
+
+
+

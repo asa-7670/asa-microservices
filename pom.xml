@@ -30,18 +30,53 @@
 
 		<h2databases.version>1.4.197</h2databases.version>
 		<gson.version>2.8.5</gson.version>
-		<httpclient.version>4.3.4</httpclient.version>
+		<httpcore.version>4.4</httpcore.version>
 	</properties>
 
 	<modules>
+		<module>asa-settings-server</module>
+		<module>asa-eureka-server</module>
+		<module>asa-zuul-server</module>
 		<module>asa-core</module>
-		<module>mcommandes</module>
-		<module>mproduits</module>
-		<module>mpaiement</module>
-		<module>client-ui</module>
-		<module>config-server</module>
-		<module>eureka-server</module>
+		<module>asa-api-produits</module>
+		<module>asa-api-commandes</module>
+		<module>asa-api-paiements</module>
+		<module>asa-client-ui</module>
+
 	</modules>
+
+	<!--common-->
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Config server-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<!-- Feign -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -86,6 +121,7 @@
 				<artifactId>spring-boot-starter-thymeleaf</artifactId>
 				<version>${spring.boot.version}</version>
 			</dependency>
+			<!-- cloud-->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -120,10 +156,9 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
-				<artifactId>httpclient</artifactId>
-				<version>${httpclient.version}</version>
+				<artifactId>httpcore</artifactId>
+				<version>${httpcore.version}</version>
 			</dependency>
-
 		</dependencies>
 
 	</dependencyManagement>
