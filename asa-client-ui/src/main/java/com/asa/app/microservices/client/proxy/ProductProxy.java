@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 import java.util.UUID;
 
-@FeignClient(name = "asa-api-produits")
+//@FeignClient(name = "asa-api-produits") -> COMMUNIQUE DIRECTEMENT AVEC PRODUITS SANS PASSER PAR ZUUL
+@FeignClient(name = "asa-zuul-server")
 @RibbonClient(name = "asa-api-produits")
 public interface ProductProxy {
 
-    @GetMapping(value = "/Produits")
+    @GetMapping(value = "asa-api-produits/Produits")
     List<ProductImpl> getProduts();
 
-    @GetMapping( value = "/Produits/{uuid}")
+    @GetMapping( value = "asa-api-produits/Produits/{uuid}")
     ProductImpl getProduct(@PathVariable("uuid") UUID uuid);
 
 }
